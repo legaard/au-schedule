@@ -1,16 +1,43 @@
 {
   "name": "au-schedule",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build -prod -aot -ec",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
+  "author": {
+    "name": "Lasse Legaard",
+    "url": "https://legaard.xyz"
+  },
+  "maintainers": [
+    {
+      "name": "Lasse Legaard",
+      "url": "https://legaard.xyz"
+    },
+    {
+      "name": "Jonas Technen"
+    }
+  ],
+  "keywords": [
+    "au",
+    "schedule",
+    "generator",
+    "aarhus",
+    "university"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com/legaard/au-schedule.git"
+  },
+  "bugs": {
+    "url": "https://github.com/legaard/au-schedule/issues"
+  },
   "dependencies": {
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
@@ -21,7 +48,9 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@ngrx/store": "^4.0.2",
     "core-js": "^2.4.1",
+    "node-sass": "^4.5.3",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
