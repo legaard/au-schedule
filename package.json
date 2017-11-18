@@ -7,8 +7,7 @@
     "start": "ng serve",
     "build": "ng build -prod -aot -ec",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": "ng lint"
   },
   "private": true,
   "author": {
@@ -18,10 +17,16 @@
   "maintainers": [
     {
       "name": "Lasse Legaard",
-      "url": "https://legaard.xyz"
+      "url": "https://legaard.xyz",
+      "role": "developer"
     },
     {
-      "name": "Jonas Technen"
+      "name": "Christian Lorentzen",
+      "role": "developer"
+    },
+    {
+      "name": "Jonas Technen",
+      "role": "designer"
     }
   ],
   "keywords": [
@@ -39,15 +44,15 @@
     "url": "https://github.com/legaard/au-schedule/issues"
   },
   "dependencies": {
-    "@angular/animations": "^4.0.0",
-    "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.0",
-    "@angular/core": "^4.0.0",
-    "@angular/forms": "^4.0.0",
-    "@angular/http": "^4.0.0",
-    "@angular/platform-browser": "^4.0.0",
-    "@angular/platform-browser-dynamic": "^4.0.0",
-    "@angular/router": "^4.0.0",
+    "@angular/animations": "^4.3.6",
+    "@angular/common": "^4.3.6",
+    "@angular/compiler": "^4.3.6",
+    "@angular/core": "^4.3.6",
+    "@angular/forms": "^4.3.6",
+    "@angular/http": "^4.3.6",
+    "@angular/platform-browser": "^4.3.6",
+    "@angular/platform-browser-dynamic": "^4.3.6",
+    "@angular/router": "^4.3.6",
     "@ngrx/store": "^4.0.2",
     "core-js": "^2.4.1",
     "node-sass": "^4.5.3",
@@ -55,9 +60,10 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.2.1",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/language-service": "^4.0.0",
+    "@angular/cli": "^1.4.2",
+    "@angular/compiler-cli": "^4.3.6",
+    "@angular/language-service": "^4.3.6",
+    "@ngrx/store-devtools": "^4.0.0",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",

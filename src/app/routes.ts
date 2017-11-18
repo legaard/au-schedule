@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { CoursesComponent } from './courses/courses.component';
-import { ExamsComponent } from './exams/exams.component';
+import { CoursesComponent } from './pages/courses/courses.component';
+import { ExamsComponent } from './pages/exams/exams.component';
 
-export const APP_ROUTES: Routes = [
+export const routes: Routes = [
     { path: 'courses', component: CoursesComponent },
     { path: 'exams', component: ExamsComponent },
     { path: '', redirectTo: '/courses', pathMatch: 'full' }
