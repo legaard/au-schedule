@@ -6,22 +6,22 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import { CoursesModule } from './pages/courses/courses.module';
-import { ExamModule } from './pages/exams/exams.module';
 import { SidebarComponent } from './shell/sidebar/sidebar.component';
 
 import { routes } from './routes';
 import { reducers } from './reducers/reducers';
+import { ExamsComponent } from './pages/exams/exams.component';
+import { CoursesComponent } from './pages/courses/courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ExamsComponent,
+    CoursesComponent,
     SidebarComponent
   ],
   imports: [
     BrowserModule,
-    CoursesModule,
-    ExamModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
