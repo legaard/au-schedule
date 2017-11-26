@@ -12,6 +12,7 @@ This project sets out to make life easier for students, at the Science and Techn
 The following people are currently maintaining on the schedule generator:
 
 - [Lasse Legaard](https://legaard.xyz) – Angular (client-side) and Node.JS (server-side)
+- [Christian Lorentzen]() – Angular (client-side)
 - [Jonas Techen](https://dk.linkedin.com/in/jonastechen/en) – Icons and UI-design
 
 However, feel free to make a pull request if you want to improve the project or add new features/functionality - we are better together 😄
