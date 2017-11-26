@@ -14,6 +14,6 @@ export class StudentService {
     return this.httpClient
       .get(url)
       .map((student: any) => student.studentName)
-      .catch(error => Observable.of('Could not find student'));
+      .catch(error => Observable.of(null));
   }
 }

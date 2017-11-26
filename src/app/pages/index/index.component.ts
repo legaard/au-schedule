@@ -12,18 +12,21 @@ import { StudentService } from './student.service';
 export class IndexComponent implements OnInit {
   studentName: Observable<string>;
   searchValue = new Subject<string>();
+  isIdValid = false;
 
   constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
     this.studentName = this.searchValue
-    .pipe(
-      debounceTime(750),
-      distinctUntilChanged(),
-      switchMap((studentId: string) => this.studentService.getStudentName(studentId)));
+      .pipe(
+        debounceTime(750),
+        distinctUntilChanged(),
+        switchMap((studentId: string) => this.studentService.getStudentName(studentId)))
+      .do(studentName => this.isIdValid = studentName !== null);
   }
 
   search(value: string) {
+    if (value === '') { return; }
     this.searchValue.next(value);
   }
 }
