@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Rx';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { StudentService } from './student.service';
+import { Student } from '../../shared/models/student.model';
 
 @Component({
   selector: 'sg-index',
@@ -10,23 +11,31 @@ import { StudentService } from './student.service';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  studentName: Observable<string>;
-  searchValue = new Subject<string>();
-  isIdValid = false;
+  private searchValue = new Subject<string>();
+
+  isLoading = false;
+  student: Student;
 
   constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
-    this.studentName = this.searchValue
+    this.searchValue
       .pipe(
-        debounceTime(750),
+        debounceTime(1000),
         distinctUntilChanged(),
         switchMap((studentId: string) => this.studentService.getStudentName(studentId)))
-      .do(studentName => this.isIdValid = studentName !== null);
+      .subscribe(student => {
+        this.isLoading = false;
+        this.student = student;
+      });
   }
 
   search(value: string) {
-    if (value === '') { return; }
+    this.isLoading = true;
     this.searchValue.next(value);
+  }
+
+  addStudent(student: Student) {
+    // dispatch action to Store
   }
 }

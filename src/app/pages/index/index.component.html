@@ -1,2 +1,8 @@
-<input type="text" #searchInput [ngClass]="{'valid': isIdValid}" (keyup)="search(searchInput.value)">
-<div>{{studentName | async}}</div>
+<div>
+    <input type="text" #searchInput (keyup)="search(searchInput.value)">
+    <i *ngIf="isLoading">Loading...</i>    
+</div>
+<div>
+    <button [disabled]="!student" (click)="addStudent(student)">Add student</button>
+    <span>{{student?.name}}</span>  
+</div>
