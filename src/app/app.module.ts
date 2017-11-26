@@ -12,13 +12,16 @@ import { routes } from './routes';
 import { reducers } from './reducers/reducers';
 import { ExamsComponent } from './pages/exams/exams.component';
 import { CoursesComponent } from './pages/courses/courses.component';
+import { IndexComponent } from './pages/index/index.component';
+import { StudentService } from './pages/index/student.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExamsComponent,
     CoursesComponent,
-    SidebarComponent
+    SidebarComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { CoursesComponent } from './pages/courses/courses.component';
       { enableTracing: false }
     )
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
