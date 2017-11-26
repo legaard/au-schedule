@@ -11,7 +11,7 @@ export class StudentService {
   constructor(private httpClient: HttpClient) { }
 
   getStudentName(studentId: string): Observable<Student> {
-    const url = `http://198.211.106.128:3033/api/v1/student/${studentId}`;
+    const url = `api/v1/student/${studentId}`;
 
     return this.httpClient
       .get(url)
