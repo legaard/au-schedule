@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 
 import { StudentService } from './student.service';
 import { Student } from '../../shared/models/student.model';
+import { AppState } from '../../reducers/reducers';
+import * as StudentToggleActions from '../../actions/student-toggle-actions';
 
 @Component({
   selector: 'sg-index',
@@ -16,7 +19,9 @@ export class IndexComponent implements OnInit {
   isLoading = false;
   student: Student;
 
-  constructor(private studentService: StudentService) { }
+  constructor(
+    private studentService: StudentService,
+    private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.searchValue
@@ -36,6 +41,6 @@ export class IndexComponent implements OnInit {
   }
 
   addStudent(student: Student) {
-    // dispatch action to Store
+    this.store.dispatch(new StudentToggleActions.AddStudent(student));
   }
 }
