@@ -9,7 +9,7 @@ export const actionTypes = {
 export class SetCourses implements Action {
     readonly type = actionTypes.SET_COURSES;
 
-    constructor(public payload: String) { }
+    constructor(public payload: string) { }
 }
 
 export class Loading implements Action {
@@ -20,7 +20,7 @@ export class Loading implements Action {
 export class Error implements Action {
     readonly type = actionTypes.ERROR;
 
-    constructor(public payload: String) { }
+    constructor(public payload: string) { }
 }
 
 export type All = SetCourses
