@@ -23,7 +23,7 @@ export class IndexComponent implements OnInit {
       .pipe(
         debounceTime(1000),
         distinctUntilChanged(),
-        switchMap((studentId: string) => this.studentService.getStudentName(studentId)))
+        switchMap((studentId: string) => this.studentService.getStudent(studentId)))
       .subscribe(student => {
         this.isLoading = false;
         this.student = student;
