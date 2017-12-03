@@ -1,7 +1,4 @@
-<div>
-    <input type="text" #searchInput (keyup)="search(searchInput.value)">
-    <i *ngIf="isLoading">Loading...</i>    
-</div>
+<sg-student-search-input (onStudentFound)="onStudentFound($event)"></sg-student-search-input>
 <div>
     <button [disabled]="!student" (click)="addStudent(student)">Add student</button>
     <span>{{student?.name}}</span>  

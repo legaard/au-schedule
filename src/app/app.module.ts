@@ -14,6 +14,7 @@ import { CoursesComponent } from './pages/courses/courses.component';
 import { IndexComponent } from './pages/index/index.component';
 import { StudentService } from './pages/index/student.service';
 import { UrlInterceptor } from './shared/util/url.interceptor';
+import { UiModule } from './shared/ui/ui.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UrlInterceptor } from './shared/util/url.interceptor';
     CoursesComponent
   ],
   imports: [
+    UiModule,
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
