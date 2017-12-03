@@ -2,7 +2,17 @@
   <nav>
     <a routerLink="/courses" routerLinkActive="active">Courses</a>
     <a routerLink="/exams" routerLinkActive="active">Exams</a>
-  </nav>  
+  </nav>
+
+  <sg-student-search-input (onStudentFound)="onStudentFound($event)"></sg-student-search-input>
+  <button [disabled]="!student" (click)="addStudent(student)">Add student</button>
+
+  <div *ngFor="let toggle of studentToggles">
+    <span (click)="removeStudent(toggle.student.id)">X</span>
+    <span>{{toggle.student.name}}</span>
+    <span>{{toggle.student.id}}</span>
+    <span (click)="toggleStudent(toggle.student.id)">{{toggle.isToggled ? 'On' : 'Off'}}</span>
+  </div>
 </div>
 
 
