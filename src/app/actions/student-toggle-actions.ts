@@ -23,8 +23,12 @@ export class RemoveStudent implements Action {
 
 export class ToggleStudent implements Action {
     public type = actionTypes.TOGGLE_STUDENT;
+    public payload = {
+        id: this.studentId,
+        isToggled: this.isToggled
+    };
 
-    constructor(public payload: string) { }
+    constructor(private studentId: string, private isToggled?: boolean) { }
 }
 
 export type All = AddStudent

@@ -1,6 +1,6 @@
 import { StudentToggle } from '../shared/models/student-toggle.model';
-import * as StudentToggleActions from '../actions/student-toggle-actions';
 import { Student } from '../shared/models/student.model';
+import * as StudentToggleActions from '../actions/student-toggle-actions';
 
 export interface StudentToggleState {
     toggles: Array<StudentToggle>;
@@ -24,22 +24,26 @@ export function reducer(state = initialState, action: StudentToggleActions.All):
             };
         }
         case StudentToggleActions.actionTypes.REMOVE_STUDENT: {
+            const id = <string> action.payload;
             const toggles = [...state.toggles]
-                .filter(toggle => toggle.student.id !== action.payload);
+                .filter(toggle => toggle.student.id !== id);
 
             return {
                 toggles
             };
         }
         case StudentToggleActions.actionTypes.TOGGLE_STUDENT: {
+            const toggleData = <{id: string; isToggled: boolean}> action.payload;
             const studentIndex = state.toggles
-                .findIndex(toggle => toggle.student.id === action.payload);
+                .findIndex(toggle => toggle.student.id === toggleData.id);
 
             if (studentIndex < 0) { return state; }
 
+            const isToggled = toggleData.isToggled !== undefined ? toggleData.isToggled : !state.toggles[studentIndex].isToggled;
+
             const student = {
                 ...state.toggles[studentIndex],
-                isToggled: !state.toggles[studentIndex].isToggled
+                isToggled
             };
 
             const toggles = [...state.toggles];
