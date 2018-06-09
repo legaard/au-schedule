@@ -3,7 +3,7 @@ import { Subject } from 'rxjs/Rx';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { Student } from '../../models/student.model';
-import { StudentService } from '../../../pages/index/student.service';
+import { StudentService } from './student.service';
 
 @Component({
   selector: 'sg-student-search-input',
@@ -12,7 +12,7 @@ import { StudentService } from '../../../pages/index/student.service';
 })
 export class StudentSearchInputComponent implements OnInit {
   private searchValue = new Subject<string>();
-  private isLoading = false;
+  isLoading = false;
 
   @Output() onStudentFound = new EventEmitter<Student>();
 

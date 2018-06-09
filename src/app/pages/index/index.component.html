@@ -1,5 +1,5 @@
 <sg-student-search-input (onStudentFound)="onStudentFound($event)"></sg-student-search-input>
 <div>
     <button [disabled]="!student" (click)="addStudent(student)">Add student</button>
-    <span>{{student?.name}}</span>  
+    <span>{{student?.name}}</span>
 </div>

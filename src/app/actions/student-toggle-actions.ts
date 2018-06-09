@@ -1,7 +1,7 @@
 
 import { Action } from '@ngrx/store';
 
-import { Student } from '../shared/models/student.model';
+import { Student } from '../common/models/student.model';
 
 export const actionTypes = {
     ADD_STUDENT: '[StudentToggle] Add Student',

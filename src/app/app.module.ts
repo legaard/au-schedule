@@ -9,23 +9,18 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './shell/sidebar/sidebar.component';
 import { routes } from './routes';
 import { reducers } from './reducers/reducers';
-import { ExamsComponent } from './pages/exams/exams.component';
-import { CoursesComponent } from './pages/courses/courses.component';
-import { IndexComponent } from './pages/index/index.component';
-import { StudentService } from './pages/index/student.service';
-import { UrlInterceptor } from './shared/util/url.interceptor';
-import { UiModule } from './shared/ui/ui.module';
+import { UrlInterceptor } from './url.interceptor';
+import { UiElementsModule } from './common/ui-elements/ui-elements.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    IndexComponent,
-    ExamsComponent,
-    CoursesComponent
   ],
   imports: [
-    UiModule,
+    UiElementsModule,
+    PagesModule,
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
@@ -38,7 +33,6 @@ import { UiModule } from './shared/ui/ui.module';
     )
   ],
   providers: [
-    StudentService,
     { provide: HTTP_INTERCEPTORS, useClass: UrlInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

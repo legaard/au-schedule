@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiClient: 'uniskema.dk',
+  apiKey: '4ddda591-7cec-4cdb-800d-7751c343241419'
 };

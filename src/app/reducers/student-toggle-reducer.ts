@@ -1,5 +1,5 @@
-import { StudentToggle } from '../shared/models/student-toggle.model';
-import { Student } from '../shared/models/student.model';
+import { StudentToggle } from '../common/models/student-toggle.model';
+import { Student } from '../common/models/student.model';
 import * as StudentToggleActions from '../actions/student-toggle-actions';
 
 export interface StudentToggleState {

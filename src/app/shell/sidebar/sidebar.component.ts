@@ -2,9 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import * as StudentToggleActions from '../../actions/student-toggle-actions';
-import { Student } from '../../shared/models/student.model';
 import { AppState } from '../../reducers/reducers';
-import { StudentToggle } from '../../shared/models/student-toggle.model';
+import { Student } from '../../common/models/student.model';
+import { StudentToggle } from '../../common/models/student-toggle.model';
 
 @Component({
   selector: 'sg-sidebar',
