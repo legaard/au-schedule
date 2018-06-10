@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "8"
+dist: trusty
+sudo: required
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  chrome: stable
+
+script:
+  - sudo chown root /opt/google/chrome/chrome-sandbox
+  - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
+  - npm run lint
+  - npm run test:headless
+  - npm run build
