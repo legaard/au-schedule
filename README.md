@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/legaard/au-schedule.svg?branch=master)](https://travis-ci.org/legaard/au-schedule)
+
 # AU Schedule Generator
 This project sets out to make life easier for students, at the Science and Technology department at Aarhus University (AU), by offering a simple way to generate schedules for one person or multiple people (e.g. a study group). Using this generator the student can:
 
