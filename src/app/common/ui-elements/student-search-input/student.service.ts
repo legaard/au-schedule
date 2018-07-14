@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 import { Student } from '../../models/student.model';
 
@@ -15,7 +15,8 @@ export class StudentService {
 
     return this.httpClient
       .get(url)
-      .map((response: any) => ({name: response.studentName, id: studentId}))
-      .catch(error => Observable.of(null));
+      .pipe(
+        map((response: any) => ({name: response.studentName, id: studentId})),
+        catchError(error => of(null)));
   }
 }

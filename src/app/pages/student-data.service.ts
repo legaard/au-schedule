@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 import { Course } from '../common/models/course.model';
 import { Exam, ExamPeriode } from '../common/models/exam.model';
@@ -15,8 +16,9 @@ export class StudentDataService {
 
     return this.httpClient
       .get(url)
-      .map((response: any) => response.courses)
-      .catch(error => Observable.of(null));
+      .pipe(
+        map((response: any) => response.courses),
+        catchError(error => of(null)));
   }
 
   getExams(studentId: string, periode: ExamPeriode): Observable<Exam[]> {
@@ -24,7 +26,8 @@ export class StudentDataService {
 
     return this.httpClient
       .get(url)
-      .map((response: any) => response.exams)
-      .catch(error => Observable.of(null));
+      .pipe(
+        map((response: any) => response.exams),
+        catchError(error => of(null)));
   }
 }
