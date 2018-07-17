@@ -1,15 +1,26 @@
 import { Action } from '@ngrx/store';
+import { Course } from '../common/models/course.model';
+import { StudentData } from '../common/models/student-data.model';
 
 export const actionTypes = {
-    SET_COURSES: '[Courses] Set Courses',
+    ADD_COURSES: '[Courses] Set Courses',
+    REMOVE_COURSES: '[Courses] Remove Courses',
     LOADING: '[Courses] Loading Courses',
     ERROR: '[Courses] Error'
 };
 
-export class SetCourses implements Action {
-    readonly type = actionTypes.SET_COURSES;
+export class AddCourses implements Action {
+    readonly type = actionTypes.ADD_COURSES;
 
-    constructor(public payload: string) { }
+    constructor(public payload: StudentData<Course>) {
+    }
+}
+
+export class RemoveCourses implements Action {
+  readonly type = actionTypes.REMOVE_COURSES;
+
+  constructor(public payload: string) {
+  }
 }
 
 export class Loading implements Action {
@@ -23,6 +34,7 @@ export class Error implements Action {
     constructor(public payload: string) { }
 }
 
-export type All = SetCourses
+export type All = AddCourses
+                | RemoveCourses
                 | Loading
                 | Error;

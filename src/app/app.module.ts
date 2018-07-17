@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './shell/sidebar/sidebar.component';
@@ -12,6 +13,8 @@ import { reducers } from './reducers/reducers';
 import { UrlInterceptor } from './url.interceptor';
 import { UiElementsModule } from './common/ui-elements/ui-elements.module';
 import { PagesModule } from './pages/pages.module';
+import { CoursesEffects } from './effects/courses.effects';
+import { StudentDataService } from './pages/student-data.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { PagesModule } from './pages/pages.module';
     SidebarComponent,
   ],
   imports: [
+    EffectsModule.forRoot([CoursesEffects]),
     UiElementsModule,
     PagesModule,
     BrowserModule,
@@ -33,7 +37,8 @@ import { PagesModule } from './pages/pages.module';
     )
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: UrlInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: UrlInterceptor, multi: true },
+    StudentDataService
   ],
   bootstrap: [AppComponent]
 })

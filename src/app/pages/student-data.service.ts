@@ -30,4 +30,14 @@ export class StudentDataService {
         map((response: any) => response.exams),
         catchError(error => of(null)));
   }
+
+  getAllExams(studentId: string): Observable<Exam[]> {
+    const url = `api/v1/students/${studentId}/exams`;
+
+    return this.httpClient
+      .get(url)
+      .pipe(
+        map((response: any) => response.exams),
+        catchError(error => of(null)));
+  }
 }
