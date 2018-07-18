@@ -5,8 +5,8 @@ import { Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
 
-import * as fromStudentToggles from '../actions/student-toggle-actions';
-import * as fromCourses from '../actions/courses-action';
+import * as studentTogglesActions from '../actions/student-toggle-actions';
+import * as coursesActions from '../actions/courses-action';
 import { StudentData } from '../common/models/student-data.model';
 import { Course } from '../common/models/course.model';
 
@@ -15,7 +15,7 @@ export default class CoursesEffects {
 
   @Effect()
   addCourses$: Observable<Action> = this.actions$.pipe(
-    ofType(fromStudentToggles.types.ADD_STUDENT),
+    ofType(studentTogglesActions.types.ADD_STUDENT),
     mergeMap(((action: any) =>
       this.studentDataService.getCourses(action.payload.id)
         .pipe(map(data => {
@@ -23,15 +23,15 @@ export default class CoursesEffects {
             data,
             studentId: action.payload.id
           };
-          return { type: fromCourses.types.ADD_COURSES, payload: studentData };
+          return new coursesActions.AddCourses(studentData);
         }),
-        catchError(() => of({ type: fromCourses.types.ERROR })))
+        catchError(() => of(new coursesActions.Error('Failed to load courses'))))
     )));
 
   @Effect()
   removeCourses$: Observable<Action> = this.actions$.pipe(
-    ofType(fromStudentToggles.types.REMOVE_STUDENT),
-    map((action: any) => ({ type: fromCourses.types.REMOVE_COURSES, payload: action.payload })));
+    ofType(studentTogglesActions.types.REMOVE_STUDENT),
+    map((action: any) => new coursesActions.RemoveCourses(action.payload)));
 
   constructor(private studentDataService: StudentDataService, private actions$: Actions) {
   }

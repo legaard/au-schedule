@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as fromStudentToggles from '../../actions/student-toggle-actions';
+import * as studentTogglesActions from '../../actions/student-toggle-actions';
 import { AppState } from '../../reducers';
 import { Student } from '../../common/models/student.model';
 import { StudentToggle } from '../../common/models/student-toggle.model';
@@ -30,14 +30,14 @@ export class SidebarComponent implements OnInit {
   }
 
   addStudent(student: Student) {
-    this.store.dispatch(new fromStudentToggles.AddStudent(student));
+    this.store.dispatch(new studentTogglesActions.AddStudent(student));
   }
 
   removeStudent(id: string) {
-    this.store.dispatch(new fromStudentToggles.RemoveStudent(id));
+    this.store.dispatch(new studentTogglesActions.RemoveStudent(id));
   }
 
   toggleStudent(id: string) {
-    this.store.dispatch(new fromStudentToggles.ToggleStudent(id));
+    this.store.dispatch(new studentTogglesActions.ToggleStudent(id));
   }
 }
