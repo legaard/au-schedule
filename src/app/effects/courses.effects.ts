@@ -11,7 +11,7 @@ import { StudentData } from '../common/models/student-data.model';
 import { Course } from '../common/models/course.model';
 
 @Injectable()
-export default class CoursesEffects {
+export class CoursesEffects {
 
   @Effect()
   addCourses$: Observable<Action> = this.actions$.pipe(
