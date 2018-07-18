@@ -9,11 +9,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './shell/sidebar/sidebar.component';
 import { routes } from './routes';
-import { reducers } from './reducers/reducers';
+import { effects } from './effects';
+import { reducers } from './reducers';
 import { UrlInterceptor } from './url.interceptor';
 import { UiElementsModule } from './common/ui-elements/ui-elements.module';
 import { PagesModule } from './pages/pages.module';
-import { CoursesEffects } from './effects/courses.effects';
 import { StudentDataService } from './pages/student-data.service';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { StudentDataService } from './pages/student-data.service';
     SidebarComponent,
   ],
   imports: [
-    EffectsModule.forRoot([CoursesEffects]),
+    EffectsModule.forRoot(effects),
     UiElementsModule,
     PagesModule,
     BrowserModule,

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { Student } from '../../common/models/student.model';
-import { AppState } from '../../reducers/reducers';
+import { AppState } from '../../reducers';
 import * as StudentToggleActions from '../../actions/student-toggle-actions';
 
 @Component({

@@ -5,33 +5,33 @@ import { Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
 
-import { actionTypes as StudentToggleActions } from '../actions/student-toggle-actions';
-import { actionTypes as CourseActions } from '../actions/courses-action';
+import * as fromStudentToggles from '../actions/student-toggle-actions';
+import * as fromCourses from '../actions/courses-action';
 import { StudentData } from '../common/models/student-data.model';
 import { Course } from '../common/models/course.model';
 
 @Injectable()
-export class CoursesEffects {
+export default class CoursesEffects {
 
   @Effect()
-  addCourse$: Observable<Action> = this.actions$.pipe(
-    ofType(StudentToggleActions.ADD_STUDENT),
-    mergeMap(((action: any) => {
-      return this.studentDataService.getCourses(action.payload.id)
+  addCourses$: Observable<Action> = this.actions$.pipe(
+    ofType(fromStudentToggles.types.ADD_STUDENT),
+    mergeMap(((action: any) =>
+      this.studentDataService.getCourses(action.payload.id)
         .pipe(map(data => {
           const studentData: StudentData<Course> = {
             data,
             studentId: action.payload.id
           };
-          return { type: CourseActions.ADD_COURSES, payload: studentData };
+          return { type: fromCourses.types.ADD_COURSES, payload: studentData };
         }),
-        catchError(() => of({type: CourseActions.ERROR})));
-    })));
+        catchError(() => of({ type: fromCourses.types.ERROR })))
+    )));
 
   @Effect()
-  removeCourse$: Observable<Action> = this.actions$.pipe(
-    ofType(StudentToggleActions.REMOVE_STUDENT),
-    mergeMap((action: any) => of({type: CourseActions.REMOVE_COURSES, payload: action.payload })));
+  removeCourses$: Observable<Action> = this.actions$.pipe(
+    ofType(fromStudentToggles.types.REMOVE_STUDENT),
+    map((action: any) => ({ type: fromCourses.types.REMOVE_COURSES, payload: action.payload })));
 
   constructor(private studentDataService: StudentDataService, private actions$: Actions) {
   }
