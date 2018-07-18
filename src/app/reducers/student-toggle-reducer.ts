@@ -1,6 +1,6 @@
 import { StudentToggle } from '../common/models/student-toggle.model';
 import { Student } from '../common/models/student.model';
-import * as StudentToggleActions from '../actions/student-toggle-actions';
+import * as studentTogglesActions from '../actions/student-toggle-actions';
 
 export interface StudentToggleState {
     toggles: Array<StudentToggle>;
@@ -10,9 +10,9 @@ const initialState: StudentToggleState = {
     toggles: []
 };
 
-export function reducer(state = initialState, action: StudentToggleActions.All): StudentToggleState {
+export function reducer(state = initialState, action: studentTogglesActions.All): StudentToggleState {
     switch (action.type) {
-        case StudentToggleActions.actionTypes.ADD_STUDENT: {
+        case studentTogglesActions.types.ADD_STUDENT: {
             const student = action.payload as Student;
             const isContained = state.toggles
                 .some(toggle => toggle.student.id === student.id);
@@ -23,7 +23,7 @@ export function reducer(state = initialState, action: StudentToggleActions.All):
                 toggles: [...state.toggles, { isToggled: true, student }]
             };
         }
-        case StudentToggleActions.actionTypes.REMOVE_STUDENT: {
+        case studentTogglesActions.types.REMOVE_STUDENT: {
             const id = <string> action.payload;
             const toggles = [...state.toggles]
                 .filter(toggle => toggle.student.id !== id);
@@ -32,7 +32,7 @@ export function reducer(state = initialState, action: StudentToggleActions.All):
                 toggles
             };
         }
-        case StudentToggleActions.actionTypes.TOGGLE_STUDENT: {
+        case studentTogglesActions.types.TOGGLE_STUDENT: {
             const toggleData = <{id: string; isToggled: boolean}> action.payload;
             const studentIndex = state.toggles
                 .findIndex(toggle => toggle.student.id === toggleData.id);

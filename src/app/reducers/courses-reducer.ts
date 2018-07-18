@@ -1,34 +1,43 @@
-import * as CoursesActions from '../actions/courses-action';
+import * as coursesActions from '../actions/courses-action';
+import { StudentData } from '../common/models/student-data.model';
+import { Course } from '../common/models/course.model';
 
 export interface CoursesState {
-    courses: Array<any>;
+    studentData: Array<StudentData<Course>>;
     loading: boolean;
     error: string;
 }
 
 const initialState: CoursesState = {
-    courses: [],
-    loading: false,
+    studentData: [],
+    loading: true,
     error: undefined
 };
 
-export function reducer(state = initialState, action: CoursesActions.All): CoursesState {
+export function reducer(state = initialState, action: coursesActions.All): CoursesState {
     switch (action.type) {
-        case CoursesActions.actionTypes.SET_COURSES: {
+        case coursesActions.types.ADD_COURSES: {
             return {
-                courses: [...state.courses, action.payload],
+                studentData: [...state.studentData, action.payload],
                 loading: false,
                 error: undefined
             };
         }
-        case CoursesActions.actionTypes.LOADING: {
+        case coursesActions.types.REMOVE_COURSES: {
+          return {
+              studentData: state.studentData.filter(studentData => studentData.studentId !== action.payload),
+              loading: false,
+              error: undefined
+          };
+        }
+        case coursesActions.types.LOADING: {
             return {
                 ...state,
                 loading: true,
                 error: undefined
             };
         }
-        case CoursesActions.actionTypes.ERROR: {
+        case coursesActions.types.ERROR: {
             return {
                 ...state,
                 loading: false,
