@@ -6,8 +6,7 @@ import { Student } from '../common/models/student.model';
 export const types = {
     ADD_STUDENT: '[StudentToggle] Add Student',
     REMOVE_STUDENT: '[StudentToggle] Remove Student',
-    TOGGLE_STUDENT: '[StudentToggle] Toggle Student',
-    LOAD_ALL: '[StudentToggle] Load All'
+    TOGGLE_STUDENT: '[StudentToggle] Toggle Student'
 };
 
 export class AddStudent implements Action {
