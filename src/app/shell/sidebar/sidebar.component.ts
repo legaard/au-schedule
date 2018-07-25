@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as studentTogglesActions from '../../actions/student-toggle-actions';
+import * as studentTogglesActions from '../../actions/student-toggles.action';
 import { AppState } from '../../reducers';
 import { Student } from '../../common/models/student.model';
 import { StudentToggle } from '../../common/models/student-toggle.model';

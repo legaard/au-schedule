@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { Student } from '../../common/models/student.model';
 import { AppState } from '../../reducers';
-import * as StudentToggleActions from '../../actions/student-toggle-actions';
+import * as studentToggleActions from '../../actions/student-toggles.action';
 
 @Component({
   selector: 'sg-index',
@@ -19,7 +19,7 @@ export class IndexComponent {
     private store: Store<AppState>) { }
 
   addStudent(student: Student) {
-    this.store.dispatch(new StudentToggleActions.AddStudent(student));
+    this.store.dispatch(new studentToggleActions.AddStudent(student));
     this.router.navigate(['/courses']);
   }
 

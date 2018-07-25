@@ -1,6 +1,6 @@
 import { StudentToggle } from '../common/models/student-toggle.model';
 import { Student } from '../common/models/student.model';
-import * as studentTogglesActions from '../actions/student-toggle-actions';
+import * as studentTogglesActions from '../actions/student-toggles.action';
 
 export interface StudentToggleState {
     toggles: Array<StudentToggle>;
