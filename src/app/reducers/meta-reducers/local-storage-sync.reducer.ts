@@ -1,6 +1,12 @@
 import { ActionReducer, INIT, UPDATE } from '@ngrx/store';
 import { LocalWebStorage, WebStorage } from '../../common/utils/local-storage';
 
+export interface LocalStorageConfiguration {
+  slices: string[];
+  key: string;
+  storage?: WebStorage;
+}
+
 export function localStorageSync(config: LocalStorageConfiguration): (actionReducer: ActionReducer<any>) => ActionReducer<any> {
   const { slices, key } = config;
   let storage = config.storage;
@@ -32,10 +38,4 @@ export function localStorageSync(config: LocalStorageConfiguration): (actionRedu
       return newState;
     };
   };
-}
-
-export interface LocalStorageConfiguration {
-  slices: string[];
-  key: string;
-  storage?: WebStorage;
 }
