@@ -1,3 +1,10 @@
+export interface WebStorage {
+  save<T>(key: string, value: T): void;
+  get<T>(key: string): T;
+  remove(key: string): void;
+  clear(): void;
+}
+
 export class LocalWebStorage implements WebStorage {
   save<T>(key: string, value: T) {
     try {
@@ -32,11 +39,4 @@ export class LocalWebStorage implements WebStorage {
       console.warn('Failed to get data from local storage', error);
     }
   }
-}
-
-export interface WebStorage {
-  save<T>(key: string, value: T): void;
-  get<T>(key: string): T;
-  remove(key: string): void;
-  clear(): void;
 }
