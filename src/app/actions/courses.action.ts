@@ -12,14 +12,14 @@ export const types = {
 export class AddCourses implements Action {
     readonly type = types.ADD_COURSES;
 
-    constructor(public payload: StudentData<Course>) {
+    constructor(readonly payload: StudentData<Course>) {
     }
 }
 
 export class RemoveCourses implements Action {
   readonly type = types.REMOVE_COURSES;
 
-  constructor(public payload: string) {
+  constructor(readonly payload: string) {
   }
 }
 
@@ -31,7 +31,7 @@ export class Loading implements Action {
 export class Error implements Action {
     readonly type = types.ERROR;
 
-    constructor(public payload: string) { }
+    constructor(readonly payload: string) { }
 }
 
 export type All = AddCourses

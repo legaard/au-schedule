@@ -24,7 +24,7 @@ export const metaReducers: MetaReducer<any>[] = [
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync(
     {
-      slices: ['studentToggles', 'courses'],
+      slices: ['studentToggles', 'courses', 'exams'],
       key: 'appState'
     }
   )(reducer);
