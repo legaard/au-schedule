@@ -15,7 +15,7 @@ const initialState: ExamsState = {
 };
 
 export function reducer(state = initialState, action: examsActions.All): ExamsState {
-    switch(action.type) {
+    switch (action.type) {
         case examsActions.types.ADD_EXAMS: {
             return {
                 studentData: [...state.studentData, action.payload],
