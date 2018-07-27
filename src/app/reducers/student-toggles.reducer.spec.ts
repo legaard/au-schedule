@@ -1,6 +1,6 @@
-import { reducer, StudentToggleState } from './student-toggle-reducer';
+import { reducer, StudentToggleState } from './student-toggles.reducer';
 import { Student } from '../common/models/student.model';
-import * as StudentToggleActions from '../actions/student-toggle-actions';
+import * as StudentToggleActions from '../actions/student-toggles.action';
 
 
 describe('Student Toggle Reducer', () => {

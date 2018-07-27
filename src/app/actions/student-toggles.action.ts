@@ -10,20 +10,20 @@ export const types = {
 };
 
 export class AddStudent implements Action {
-    public type = types.ADD_STUDENT;
+    readonly type = types.ADD_STUDENT;
 
-    constructor(public payload: Student) { }
+    constructor(readonly payload: Student) { }
 }
 
 export class RemoveStudent implements Action {
-    public type = types.REMOVE_STUDENT;
+    readonly type = types.REMOVE_STUDENT;
 
-    constructor(public payload: string) { }
+    constructor(readonly payload: string) { }
 }
 
 export class ToggleStudent implements Action {
-    public type = types.TOGGLE_STUDENT;
-    public payload = {
+    readonly type = types.TOGGLE_STUDENT;
+    readonly payload = {
         id: this.studentId,
         isToggled: this.isToggled
     };
@@ -32,6 +32,6 @@ export class ToggleStudent implements Action {
 }
 
 export type All = AddStudent
-    | RemoveStudent
-    | ToggleStudent;
+                | RemoveStudent
+                | ToggleStudent;
 

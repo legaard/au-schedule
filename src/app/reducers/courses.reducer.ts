@@ -1,4 +1,4 @@
-import * as coursesActions from '../actions/courses-action';
+import * as coursesActions from '../actions/courses.action';
 import { StudentData } from '../common/models/student-data.model';
 import { Course } from '../common/models/course.model';
 

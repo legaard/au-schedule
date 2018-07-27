@@ -5,8 +5,8 @@ import { Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
 
-import * as studentTogglesActions from '../actions/student-toggle-actions';
-import * as coursesActions from '../actions/courses-action';
+import * as studentTogglesActions from '../actions/student-toggles.action';
+import * as coursesActions from '../actions/courses.action';
 import { StudentData } from '../common/models/student-data.model';
 import { Course } from '../common/models/course.model';
 
